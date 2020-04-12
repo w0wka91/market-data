@@ -1,4 +1,4 @@
-podTemplate(yaml: """
+podTemplate(yaml: '''
 apiVersion: v1
 kind: Pod
 spec:
@@ -7,9 +7,8 @@ spec:
     image: docker
     command: ['cat']
     tty: true
-"""
+'''
   ) {
-
   node(POD_LABEL) {
     def tag = "${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     def service = "market-data:${tag}"
