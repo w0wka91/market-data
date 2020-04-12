@@ -16,7 +16,7 @@
           step([$class: 'JUnitResultArchiver', testResults: 'results.xml'])
         }
       }
-      def tagToDeploy = "[w0wka91]/${service}"
+      def tagToDeploy = "w0wka91/${service}"
       stage('Publish') {
         withDockerRegistry(registry: [credentialsId: 'dockerhub']) {
           sh("docker tag ${service} ${tagToDeploy}")
