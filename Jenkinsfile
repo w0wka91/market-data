@@ -1,5 +1,5 @@
 def withPod(body) {
- podTemplate(containers: [
+ podTemplate(label: 'pod', containers: [
    containerTemplate(name: 'docker', image: 'docker', command: 'cat', ➥ttyEnabled: true),
   ]
  ) {
@@ -8,7 +8,7 @@ def withPod(body) {
 }
 
 withPod {
- node(POD_LABEL) {
+ node('pod') {
   def tag = "${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
   def service = "market-data:${tag}"
   checkout scm
